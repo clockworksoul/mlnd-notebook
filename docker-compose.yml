@@ -2,7 +2,7 @@ version: '2'
 
 services:
   notebook:
-    image: jupyter/datascience-notebook
+    image: clockworksoul/mlnd-notebook
     container_name: mlnd-notebook
     ports:
       - 8888:8888
