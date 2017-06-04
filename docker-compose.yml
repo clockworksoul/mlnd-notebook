@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  notebook:
+    image: jupyter/datascience-notebook
+    container_name: mlnd-notebook
+    ports:
+      - 8888:8888
+    volumes:
+      - ./notebooks/:/home/jovyan/work/:rw
