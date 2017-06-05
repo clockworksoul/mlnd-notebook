@@ -43,34 +43,22 @@ $ cd mlnd-notebook
 $ wget https://raw.githubusercontent.com/clockworksoul/mlnd-notebook/master/docker-compose.yml
 ```
 
-### Third, pull notebook image
-
-Note that this image contains _a lot_ of useful things, and is quite large: 6.93GB at last check. This step will take some time.
-
-From the `mlnd-notebook` directory, execute the following:
-```
-$ docker-compose pull
-```
-
-This will read the `docker-compose.yml` file, determine which image to pull, and pull it.
-
 ## Start the Notebook
 
-Use the `docker-compose` command to start the notebook.
+Use the `docker-compose` command to start the notebook. From the `mlnd-notebook` directory, execute the following:
 
 ```
-$ docker-compose up -d
+$ docker-compose up --build
 ```
+
+Note that the first time you run this, Docker will pull the entire image. The image contains _a lot_ of useful things, and is quite large: 6.93GB at last check. This will take some time.
+
+Also, whenever you execute this command, Docker will check for and utomatically updates to the image, but future downloads won't be nearly as large.
+
 
 ### Set the token (first time only)
 
-The first time you start the notebook (unless if you've removed the container), you'll need to supply a token. You can get this by checking the container's log output:
-
-```
-$ docker-compose logs
-```
-
-When you do this, you should see something like the following, which includes instructions and a URL:
+The first time you start the notebook (unless if you've removed the container), you'll need to supply a token. Simply follow the instructions provided in the output, which should look something like the following:
 
 ```
 mlnd-notebook |     Copy/paste this URL into your browser when you connect for the first time,
@@ -89,11 +77,3 @@ If you see a message requesting a password or token, repeat the _Set the token_ 
 ## Get files into the notebook
 
 When you start the notebook, you'll notice a `files` directory has been created for you. Anything that you add to this directory will be accessible to your notebook. 
-
-## Shut down your notebook
-
-Very simple:
-
-```
-$ docker-compose stop
-```
