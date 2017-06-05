@@ -53,7 +53,7 @@ $ docker-compose up --build
 
 Note that the first time you run this, Docker will pull the entire image. The image contains _a lot_ of useful things, and is quite large: 6.93GB at last check. This will take some time.
 
-Also, whenever you execute this command, Docker will check for and utomatically updates to the image, but future downloads won't be nearly as large.
+Also, whenever you execute this command, Docker will check for and automatically updates to the image, but future downloads won't be nearly as large.
 
 
 ### Set the token (first time only)
