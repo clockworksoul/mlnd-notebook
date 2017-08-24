@@ -7,4 +7,4 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ./files/:/home/jovyan/work/:rw
+      - ./files/:/home/jovyan/:rw
