@@ -23,6 +23,7 @@ USER $NB_USER
 # use notebook-friendly backends in these images
 RUN conda install --quiet --yes \
     'ipywidgets=6.0*' \
+    'keras=2.0*' \
     'opencv=3.2*' \
     'pandas=0.19*' \
     'numexpr=2.6*' \
@@ -30,7 +31,9 @@ RUN conda install --quiet --yes \
     'scipy=0.19*' \
     'scikit-learn=0.18*' \
     'scikit-image=0.12*' \
-    && conda remove --quiet --yes --force qt pyqt && \
+    'tensorflow=1.0*' \
+    'tqdm=4.15*' \
+    && conda remove --quiet --yes --force theano && \
     conda clean -tipsy
 
 # Activate ipywidgets extension in the environment that runs the notebook server
@@ -42,14 +45,17 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'ipython=5.3*' \
     'ipywidgets=6.0*' \
+    'keras=2.0*' \
     'opencv=3.2*' \
     'pandas=0.19*' \
     'numexpr=2.6*' \
     'matplotlib=2.0*' \
     'scipy=0.19*' \
-    'scikit-learn>=0.17,<0.18' \
+    'scikit-learn>=0.18*' \
     'scikit-image=0.12*' \
-    && /bin/bash -c 'source activate python2 && conda remove --quiet --yes --force qt pyqt && conda clean -tipsy'
+    'tensorflow=1.0*' \
+    'tqdm=4.15*' \
+    && /bin/bash -c 'source activate python2 && conda remove --quiet --yes --force theano && conda clean -tipsy'
 
 # Activate ipywidgets extension in the environment that runs the notebook server
 RUN /bin/bash -c 'source activate python2 && jupyter nbextension enable --py widgetsnbextension --sys-prefix'
@@ -78,14 +84,6 @@ RUN pip install kernda --no-cache && \
     pip uninstall kernda -y
 
 USER $NB_USER
-
-# Install Tensorflow
-RUN conda install --quiet --yes -n python2 'tensorflow=1.0*' && \
-    conda install --quiet --yes 'tensorflow=1.0*'
-
-# Install Keras
-RUN conda install --quiet --yes -n python2 'keras=2.0*' && \
-    conda install --quiet --yes 'keras=2.0*'
 
 ENV KERAS_BACKEND=tensorflow
 
