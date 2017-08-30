@@ -1,12 +1,23 @@
 # Data Science Notebook for Udacity's Machine Learning Nanodegree
 
-This is a simple modification of Jupyter's [official datascience notebook](https://github.com/jupyter/docker-stacks/tree/master/datascience-notebook), with the following basic modification(s): 
+This extends Jupyter's [official base notebook](https://github.com/jupyter/docker-stacks/tree/master/base-notebook) to install Python 2.7 and Python 3 (both kernels are available) and install following packages:
 
-* `scikit-learn` is downgraded to version `0.17`
+* `keras 2.0`
+* `matplotlib 2.0`
+* `numexpr 2.6`
+* `opencv 3.2`
+* `pandas 0.19`
+* `scipy 0.19`
+* `scikit-learn 0.18`
+* `scikit-image 0.12`
+* `tensorflow 1.0`
+* `tqdm 4.15`
+
+If you feel that a package is missing or would otherwise be useful, please feel free to [create an issue](https://github.com/clockworksoul/mlnd-notebook/issues/new), or message me (`@ClockworkSoul`) directly on the MLND Slack.
 
 ## A note on Python versions
 
-Because this extends the standard [data science notebook](https://hub.docker.com/r/jupyter/datascience-notebook/), it is capable of executing both Python 2.7.x and 3.x. Generally, when you open an existing notebook, the correct version kernel (2.7.x) will be selected, but in some cases you may have to change the kernel version for the notebook.
+This image is capable of executing both Python 2.7.x and 3.x kernels. Generally, when you open an existing notebook, the correct version kernel (2.7.x) will be selected, but in some cases you may have to change the kernel version for the notebook.
 
 ## How to install
 

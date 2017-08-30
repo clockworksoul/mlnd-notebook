@@ -19,18 +19,16 @@ RUN apt-get update && \
 USER $NB_USER
 
 # Install Python 3 packages
-# Remove pyqt and qt pulled in for matplotlib since we're only ever going to
-# use notebook-friendly backends in these images
 RUN conda install --quiet --yes \
     'ipywidgets=6.0*' \
     'keras=2.0*' \
+    'matplotlib=2.0*' \
+    'numexpr=2.6*' \
     'opencv=3.2*' \
     'pandas=0.19*' \
-    'numexpr=2.6*' \
-    'matplotlib=2.0*' \
-    'scipy=0.19*' \
     'scikit-learn=0.18*' \
     'scikit-image=0.12*' \
+    'scipy=0.19*' \
     'tensorflow=1.0*' \
     'tqdm=4.15*' \
     && conda remove --quiet --yes --force theano && \
@@ -40,19 +38,17 @@ RUN conda install --quiet --yes \
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix
 
 # Install Python 2 packages
-# Remove pyqt and qt pulled in for matplotlib since we're only ever going to
-# use notebook-friendly backends in these images
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'ipython=5.3*' \
     'ipywidgets=6.0*' \
     'keras=2.0*' \
+    'matplotlib=2.0*' \
+    'numexpr=2.6*' \
     'opencv=3.2*' \
     'pandas=0.19*' \
-    'numexpr=2.6*' \
-    'matplotlib=2.0*' \
-    'scipy=0.19*' \
-    'scikit-learn>=0.18*' \
+    'scikit-learn=0.18*' \
     'scikit-image=0.12*' \
+    'scipy=0.19*' \
     'tensorflow=1.0*' \
     'tqdm=4.15*' \
     && /bin/bash -c 'source activate python2 && conda remove --quiet --yes --force theano && conda clean -tipsy'
