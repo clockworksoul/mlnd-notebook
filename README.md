@@ -88,3 +88,9 @@ If you see a message requesting a password or token, repeat the _Set the token_ 
 ## Get files into the notebook
 
 When you start the notebook, you'll notice a `files` directory has been created for you. Anything that you add to this directory will be accessible to your notebook. 
+
+##
+
+```
+$ docker-compose exec --user root notebook fix-permissions /home/jovyan/work
+```
